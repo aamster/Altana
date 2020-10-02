@@ -6,7 +6,7 @@ from sklearn.model_selection import RandomizedSearchCV
 
 class LR:
     def hyperparam_tuning(self, X, y):
-        model = LogisticRegression(penalty='elasticnet')
+        model = LogisticRegression(penalty='elasticnet', solver='saga')
         distributions = dict(C=uniform(loc=0, scale=4), l1_ratio=uniform(), class_weight=['balanced', None])
         clf = RandomizedSearchCV(model, distributions)
         search = clf.fit(X, y)
